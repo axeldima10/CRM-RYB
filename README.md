@@ -1,50 +1,55 @@
-# React + TypeScript + Vite
+# CRM-RYB
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A SaaS CRM MVP for Rise Your Business (RYB), designed to centralize lead management, client follow-up, meetings, quotes, payments, commissions, projects, and business-development activity.
 
-Currently, two official plugins are available:
+The application supports three user groups: administrators, business developers, and clients. Role-based dashboards and access guards organize each user's workflow.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Product scope
 
-## Expanding the ESLint configuration
+- Lead and prospect tracking
+- Meeting and quote follow-up
+- Payment and commission tracking
+- Business developer management and training resources
+- Project tracking for clients and administrators
+- Audit log and account settings
+- Dashboard KPIs and activity timeline
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Technology
 
-- Configure the top-level `parserOptions` property like this:
+- React 18 + TypeScript + Vite
+- Tailwind CSS and shadcn/ui
+- React Router
+- Supabase (Auth, PostgreSQL, Row Level Security, real-time and storage)
+- Recharts and Lucide React
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+The current MVP includes demo data for immediate preview, with Supabase integration prepared for activation. Treat demo data as sample content, not production customer data.
+
+## Run locally
+
+Requirements: Node.js and npm.
+
+```bash
+npm install
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Vite prints the local development URL after startup.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Quality checks
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+npm run lint
+npm run build
 ```
+
+## Configuration
+
+Copy `.env.example` to `.env` and configure the Supabase values required by `src/services/supabase.ts`. Never commit real credentials or production secrets.
+
+## Architecture
+
+See [ARCHITECTURE.md](./ARCHITECTURE.md) for the product architecture, route map, project structure, roles, and implementation trade-offs.
+
+## Status
+
+This repository represents an MVP codebase. Confirm which flows are connected to live Supabase services before using it with real customer or financial data.
